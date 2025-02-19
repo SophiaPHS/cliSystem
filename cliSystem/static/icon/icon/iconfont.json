@@ -1,0 +1,93 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "827988",
+      "name": "医生",
+      "font_class": "yisheng",
+      "unicode": "e6b2",
+      "unicode_decimal": 59058
+    },
+    {
+      "icon_id": "2058900",
+      "name": "患者1",
+      "font_class": "huanzhe",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "3590935",
+      "name": "管理员",
+      "font_class": "guanliyuan",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "4748108",
+      "name": "缴费",
+      "font_class": "jiaofei",
+      "unicode": "e7c8",
+      "unicode_decimal": 59336
+    },
+    {
+      "icon_id": "11930511",
+      "name": "默认头像",
+      "font_class": "morentouxiang",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "15103885",
+      "name": "在线问诊",
+      "font_class": "zaixianwenzhen",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "17868595",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "20763088",
+      "name": "医院管理",
+      "font_class": "yiyuanguanli",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "20997698",
+      "name": "角色管理-成员列表",
+      "font_class": "menu_js_cylb",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "21786567",
+      "name": "预约挂号",
+      "font_class": "yuyueguahao",
+      "unicode": "e693",
+      "unicode_decimal": 59027
+    },
+    {
+      "icon_id": "30410472",
+      "name": "电子病历",
+      "font_class": "dianzibingli",
+      "unicode": "e746",
+      "unicode_decimal": 59206
+    },
+    {
+      "icon_id": "31380427",
+      "name": "药品信息",
+      "font_class": "yaopinxinxi",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    }
+  ]
+}

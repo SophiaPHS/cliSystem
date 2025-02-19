@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>管理端</title>
+    <link rel="shotcut icon" href=" ../static/images/logo.jpg" >
+    <link rel="stylesheet" href="../static/bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/admin.css">
+    <link rel="stylesheet" href="../static/icon/icon/iconfont.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- 左侧导航栏 -->
+<div class="side_nav">
+    <span class="iconfont icon-yiyuanguanli">医院管理</span>
+    <ul class="nav nav-pills nav-stacked">
+        <li class="info"><a href="#" class="qita">个人信息</a></li>
+        <li class="user">
+            <a href="#" id="user" class="qita" >用户管理<span class="caret"></span></a>
+            <ul class="user_menu" style="display:none;">
+                <li><a href="#" id="stu_nav">学生信息</a></li>
+                <li><a href="#" id="doc_nav">医生信息</a></li>
+            </ul>
+        </li>
+        <li class="serve">
+            <a href="#" id="service" class="qita">医院服务<span class="caret"></span></a>
+            <ul class="serve_menu"  style="display: none">
+                <li><a href="#" class="qita">医院信息</a></li>
+                <li><a href="#" id="drug_nav">药品信息</a></li>
+                <li><a href="#" class="qita">缴费信息</a></li>
+                <li><a href="#" class="qita">在线问诊</a></li>
+                <li><a href="#" class="qita">在线处方</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<!-- 顶部模块-->
+<div class="top_nav">
+    <div class="row left_nav">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" class="form-control inputinfo" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default icon-btn" type="button"><span class="iconfont icon-sousuo"></span></button>
+                 </span>
+            </div>
+        </div>
+    </div>
+    <div class="right_nav">
+        <div class="username">{{userId}}</div>
+        <div class="head_img">
+            <span class="iconfont icon-morentouxiang">欢迎你
+                <ul class="set_menu" style="visibility: hidden">
+                        <li><a href="#">修改密码</a></li>
+                        <li><a href="/">退出登录</a></li>
+                </ul>
+            </span>
+        </div>
+    </div>
+</div>
+<!-- 右侧中心模块-->
+<div class="content">
+    <h1>欢迎使用campus<br>HIS</h1>
+    <div class="table">
+        <div class="table_content">
+            <div class="top_method">
+                <button class="btn btn-default add" type="button" style="margin-right: 10px" name="add">新增</button>
+                <input type="text" name="sel_info" placeholder="输入查询内容" class="sel_input">
+                <button type="submit" value="查询" class="sel_submit" id="submit" name="sel">查询</button>
+            </div>
+            <div class="table_info"></div>
+        </div>
+    </div>
+</div>
+<script>
+    <!-- 实现二级菜单显示与隐藏   -->
+    let flag1=1
+    let flag2=1
+    let userinfo = document.getElementById('user')
+    let service = document.getElementById('service')
+    userinfo.onclick = function () {
+        if(flag1==1){
+            let user_menu = document.getElementsByClassName('user_menu')[0]
+            user_menu.style.display = 'block'
+            flag1=0
+        }else {
+            let user_menu = document.getElementsByClassName('user_menu')[0]
+            user_menu.style.display = 'none'
+            flag1=1
+        }
+    }
+    service.onclick = function () {
+        if(flag2==1){
+            let serve_menu = document.getElementsByClassName('serve_menu')[0]
+            serve_menu.style.display = 'block'
+            flag2=0
+        }else {
+            let serve_menu = document.getElementsByClassName('serve_menu')[0]
+            serve_menu.style.display = 'none'
+            flag2=1
+        }
+    }
+    //实现头像下拉框的显示与隐藏
+    let setinfo = document.getElementsByClassName('icon-morentouxiang')[0]
+    let set_menu = document.getElementsByClassName('set_menu')[0]
+    setinfo.onmouseover = function () {
+        set_menu.style.visibility='visible'
+    }
+    setinfo.onmouseout = function () {
+        set_menu.style.visibility='hidden'
+    }
+
+    // 其他菜单栏切换为初始界面
+    let table_css = $('.table')
+    $(".qita").on('click',function () {
+        if(table_css.show()){
+            table_css.hide()
+        }
+    })
+    //  实现数据渲染页面
+    //  ajax发送消息给后台，后台传输数据库中的表信息
+    // 学生信息
+    $(function() {
+        $('#stu_nav').on('click', function () {
+            $.ajax({
+                // 1.url 请求地址
+                url: '/admin',
+                // 2.type 请求方式，默认是'GET'，常用的还有'POST'
+                type: 'POST',
+                // 3.dataType 设置返回的数据格式，常用的是'json'格式，以及设置contentType
+                dataType: "json",
+                contentType:'application/json',
+                // 4.data 设置发送给服务器的数据并将数据转换为JSON格式, 没有参数不需要设置
+                data: JSON.stringify({"object": "stu"}),
+                // 5.success 设置请求成功后的回调函数
+                success: function (response) {
+                    // 数据成功获取后，动态加载表格
+                    let html = '<table class="table table-bordered">' +
+                        '<tr><td>学号</td><td>姓名</td><td>性别</td>' +
+                        '<td>年龄</td><td>昵称</td><td>操作</td></tr>'
+                    $.each(response, function (i, item) {
+                        html += '<tr id="'+i+'">'
+                        $.each(item, function (j, val) {
+                            html += '<td>' + val + '</td>'
+                        })
+                        html += '<td><button class="change">修改</button><button class="del" value="'+response[i][0]+'" name="delbtn" id="stu" data-id="' +response[i][0] + '">删除</button></td></tr>'
+                    })
+                    html += '</table>'
+                    $('.table_info').html(html) // 渲染页面
+                    $('.table').show() // 表示display:block,
+                },
+                // 6.error 设置请求失败后的回调函数
+                error: function () {
+                    alert("请求失败,请稍后再试!");
+                },
+                // 7.async 设置是否异步，默认值是'true'，表示异步，一般不用写
+                async: true
+             });
+        });
+    })
+    // 分页获取医生信息
+    function getDocData(page,pageNum){
+        $.ajax({
+            url: '/admin',
+            type: 'POST',
+            dataType: "json",
+            contentType:'application/json',
+            data: JSON.stringify({
+                "object": "doc",
+                "page":page
+            }),
+            success:function (data) {
+                let doctor = data.doctors
+                let html='<table class="table table-bordered" id="doc">'+
+                            '<tr><td>医生工号</td><td>科室编号</td><td>科室</td>' +
+                            '<td>姓名</td><td>性别</td><td>职位</td><td>擅长治疗</td><td>操作</td></tr>'
+                    $.each(doctor,function (i,item) {
+                        html+= '<tr id="'+i+'">'
+                        $.each(item,function (j,val) {
+                            html+='<td>'+val+'</td>'
+                        })
+                        html+='<td><button class="change">修改</button><button class="del" value="'+doctor[i][0]+'" name="delbtn" id="doc" data-id="' +doctor[i][0] + '">删除</button></td></tr>'
+                    })
+                    html+='</table><nav aria-label="Page navigation"><ul class="pagination">'
+                    // 构建分页组件
+                    for(let i=1;i<=pageNum;i++){
+                        html+='<li><a href="#" class="page">'+i+'</a></li>'
+                    }
+                    html+='</ul></nav>'
+                    $('.table_info').html(html)
+                    $('.table').show()
+                    $('.page').on('click',function (e) {
+                        let page = $(this).text() // 获取点击的页面
+                        getDocData(page,pageNum)
+                    });
+            }
+        })
+    }
+    // 初次获取医生信息
+    $(function() {
+        $('#doc_nav').on('click', function () {
+            $.ajax({
+                url: '/admin',
+                type: 'POST',
+                dataType: "json",
+                contentType:'application/json',
+                data: JSON.stringify({"object": "doc"}),
+                success: function (response) {
+                    let doctorcount = response.doctorcount
+                    let doctor = response.doctors
+                    let pageNum = Math.ceil(doctorcount/10) // 总页数
+                    let html='<table class="table table-bordered" id="doc">'+
+                            '<tr><td>医生工号</td><td>科室编号</td><td>科室</td>' +
+                            '<td>姓名</td><td>性别</td><td>职位</td><td>擅长治疗</td><td>操作</td></tr>'
+                    $.each(doctor.slice(0,10),function (i,item) {
+                        html+= '<tr id="'+i+'">'
+                        $.each(item,function (j,val) {
+                            html+='<td>'+val+'</td>'
+                        })
+                        html+='<td><button class="change">修改</button><button class="del" value="'+doctor[i][0]+'" name="delbtn" id="doc" data-id="' +doctor[i][0] + '">删除</button></td></tr>'
+                    })
+                    html+='</table><nav aria-label="Page navigation"><ul class="pagination">'
+                    // 构建分页组件
+                    for(let i=1;i<=pageNum;i++){
+                        html+='<li><a href="#" class="page">'+i+'</a></li>'
+                    }
+                    html+='</ul></nav>'
+                    $('.table_info').html(html)
+                    $('.table').show()
+                    $('.page').on('click',function (e) {
+                        let page = $(this).text() // 获取点击的页面
+                        getDocData(page,pageNum)
+                    });
+                },
+                error: function () {
+                    alert("请求失败,请稍后再试!");
+                },
+                async: true
+            });
+        });
+    })
+    // 分页点击获取药品数据
+    function getDrugData(page,pageNum) {
+        $.ajax({
+            url: '/admin',
+            type: 'POST',
+            dataType: "json",
+            contentType:'application/json',
+            data: JSON.stringify({
+                "object": "drug",
+                "page":page
+            }),
+            success:function (data) {
+                let drugs = data.drugs
+                let html='<table class="table table-bordered" id="drug">'+
+                            '<tr><td>药品编号</td><td>药品名称</td><td>药品规格</td>' +
+                            '<td>剂型</td><td>功效</td><td>生产企业</td><td>价格</td><td>库存量</td><td>操作</td></tr>'
+                    $.each(drugs,function (i,item) {
+                        html+='<tr id="'+i+'">'
+                        $.each(item,function (j,val) {
+                            html+='<td>'+val+'</td>'
+                        })
+                        html+='<td><button class="change">修改</button><button class="del" value="'+drugs[i][0]+'" name="delbtn" id="drug" data-id="' +drugs[i][0] + '">删除</button></td></tr>'
+
+                    })
+
+                    html+='</table><nav aria-label="Page navigation"><ul class="pagination">'
+                    // 构建分页组件
+                    for(let i=1;i<=pageNum;i++){
+                        html+='<li><a href="#" class="page">'+i+'</a></li>'
+                    }
+                    html+='</ul></nav>'
+                    $('.table_info').html(html)
+                    $('.table').show()
+                    $('.page').on('click',function (e) {
+                        let page = $(this).text() // 获取点击的页面
+                        getDrugData(page,pageNum)
+                    });
+            }
+        })
+    }
+
+    //  初始获取药品信息
+    $(function() {
+        $('#drug_nav').on('click', function () {
+            $.ajax({
+                url: '/admin',
+                type: 'POST',
+                dataType: "json",
+                contentType:'application/json',
+                data: JSON.stringify({"object": "drug"}),
+                success: function (response) {
+                    let drugcount = response.drugcount
+                    let drugs = response.drugs
+                    let pageNum = Math.ceil(drugcount/6) // 总页数
+                    let html='<table class="table table-bordered" id="drug">'+
+                            '<tr><td>药品编号</td><td>药品名称</td><td>药品规格</td>' +
+                            '<td>剂型</td><td>功效</td><td>生产企业</td><td>价格</td><td>库存量</td><td>操作</td></tr>'
+                    $.each(drugs.slice(0,6),function (i,item) {
+                        html+='<tr id="'+i+'">'
+                        $.each(item,function (j,val) {
+                            html+='<td>'+val+'</td>'
+                        })
+                        html+='<td><button class="change">修改</button><button class="del" value="'+drugs[i][0]+'" name="delbtn" id="drug" data-id="' +drugs[i][0] + '">删除</button></td></tr>'
+
+                    })
+                    html+='</table><nav aria-label="Page navigation"><ul class="pagination">'
+                    // 构建分页组件
+                    for(let i=1;i<=pageNum;i++){
+                        html+='<li><a href="#" class="page">'+i+'</a></li>'
+                    }
+                    html+='</ul></nav>'
+                    $('.table_info').html(html)
+                    $('.table').show()
+                    $('.page').on('click',function (e) {
+                        let page = $(this).text() // 获取点击的页面
+                        getDrugData(page,pageNum)
+                    });
+                },
+                error: function () {
+                    alert("请求失败,请稍后再试!");
+                },
+                async: true
+            });
+        });
+    })
+
+
+</script>
+</body>
+</html>

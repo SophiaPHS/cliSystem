@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>南昌航空大学校医院登录端</title>
+    <link rel="shotcut icon" href=" ../static/images/logo.jpg" >
+    <link rel="stylesheet" href="../static/bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/icon/icon/iconfont.css">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="title">校园智慧门诊后台管理系统</div>
+    <div class="login-parent">
+        <form action="#" method="post" class="info" name="form">
+            <div class="info-child user">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <input type="text" id="username" name="username" class="input-info" value="" placeholder="请输入工号" onblur="checkName(this.value)" onfocus="back(1)">
+            </div>
+            <span id="nameError" class="error"></span>
+            <div class="info-child pwd">
+                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                <input type="password" id="pwd" name="password" class="input-info" value="" placeholder="请输入密码" onblur="checkPwd(this.value)" onfocus="back(2)">
+            </div>
+            <span id="pwdError" class="error"></span>
+            <div class="info-child role">
+                <span class="iconfont icon-menu_js_cylb"></span>
+                <select name="role" id="sel" onfocus="back(3)">
+                    <option value=2>身份选择</option>
+                    <option value=0>管理员</option>
+                    <option value=1>医生</option>
+                </select>
+            </div>
+            <input type="submit" value="登录" class="loginBtn" id="submit">
+        </form>
+        <p class="err" id="err">{{ message }}</p>
+    </div>
+    <script>
+        <!-- 登录验证   -->
+        let errorname = document.getElementById('nameError')
+        let errorpwd = document.getElementById('pwdError')
+        let user = document.getElementById('username')
+        let pwd = document.getElementById('pwd')
+        let login = document.getElementById('submit')
+        let elem = document.getElementById('err')
+        console.log(elem.textContent)
+        function checkName(username){
+            elem.textContent=''
+            if(username == ""){
+                errorname.innerHTML="<font color='red'>用户名不能为空</font>"
+            }else{
+                errorname.innerHTML=""
+            }
+        }
+        function back(id){
+            if(id==1){
+                errorname.innerHTML=""
+            }else if(id==2){
+                errorpwd.innerHTML=""
+            }
+            elem.textContent=''
+        }
+        function checkPwd(pwd){
+            elem.textContent=''
+            if(pwd == ""){
+                errorpwd.innerHTML="<font color='red'>密码不能为空</font>"
+            }
+        }
+        function back(pwd) {
+            errorpwd.innerHTML=""
+            elem.textContent=''
+        }
+        login.onclick=function () {
+            elem.textContent=''
+            let sel = document.getElementById('sel')
+            let index = sel.selectedIndex
+            let value = sel.options[index].value
+            if((user.value=="")||(pwd.value=="")||value==2){
+                alert('信息不能为空')
+            }
+        }
+    </script>
+</body>
+</html>

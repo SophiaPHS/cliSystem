@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/*整个页面的大小*/
+body{
+    background: url("../images/login.png") no-repeat;
+    background-size: 100% 100%;
+	background-attachment: fixed;/* 确保页面滑动时背景能铺满 */
+}
+.title{
+    height: 50px;
+    position: fixed;
+    left: 25%;
+    top:5%;
+    font-size: 60px;
+    letter-spacing: 5px;
+    font-weight: bolder;
+}
+.login-parent{
+    position:relative;
+    width: 380px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    margin:200px 0 0 -190px ;
+    border: 1px solid #f8f8f8;
+    background-color: rgba(248, 241, 241, 0.6);
+}
+.login-parent > .err{
+    position: absolute;
+    display: block;
+    top: 80%;
+    left: 50%;
+    font-size: 15px;
+    font-weight: bolder;
+    color: red;
+}
+.login-parent > .info{
+    position: absolute;
+    width: 320px;
+    height: 300px;
+    margin: 50px 25px;
+    box-shadow: 0 2px 12px 0 rgba(154, 211, 248, 0.5); //让登录框增加阴影
+    border-radius: 8px; //增加登录框的圆弧角
+
+}
+.login-parent > .info > .info-child{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content:space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 200px;
+    height: 30px;
+}
+.login-parent > .info > .info-child > .glyphicon,.iconfont{
+    font-size: 30px;
+    margin-right: 5px;
+}
+.login-parent > .info > .info-child > .input-info{
+    font-size: 20px;
+    text-indent: 1em;
+}
+.login-parent > .info > .user{
+    margin-top: 40px;
+}
+.login-parent > .info > .error{
+    width: 100px;
+    height: 5px;
+    margin-left: 45px;
+}
+
+.login-parent > .info > .role > .sel{
+    text-align: center;
+    text-align-last: center;
+}
+.login-parent > .info > .loginBtn{
+    width: 250px;
+    height: 50px;
+    margin-top: 25px;
+    margin-left: 35px;
+    color: grey;
+    font-size: 30px;
+    line-height: 45px;
+}
+
+
+
+

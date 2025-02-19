@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>医生端</title>
+    <link rel="shotcut icon" href=" ../static/images/logo.jpg" >
+    <link rel="stylesheet" href="../static/bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/doctor.css">
+    <link rel="stylesheet" href="../static/icon/icon/iconfont.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="side_nav">
+    <span class="iconfont icon-yiyuanguanli">医院管理</span>
+    <ul class="nav nav-pills nav-stacked">
+        <li class="info"><a href="#">个人信息</a></li>
+        <li class="user">
+            <a href="#" id="user">医疗服务<span class="caret"></span></a>
+            <ul class="user_menu" style="display:none;">
+                <li><a href="#">患者信息</a></li>
+                <li><a href="#">开处方药</a></li>
+                <li><a href="#">线上门诊</a></li>
+            </ul>
+        </li>
+        <li class="serve">
+            <a href="#" id="service">员工服务<span class="caret"></span></a>
+            <ul class="serve_menu"  style="display: none">
+                <li><a href="#">员工咨询</a></li>
+                <li><a href="#">药房信息</a></li>
+                <li><a href="#">员工看病福利</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="top_nav">
+    <div class="row left_nav">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" class="form-control inputinfo" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default icon-btn" type="button"><span class="iconfont icon-sousuo"></span></button>
+                 </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+    <div class="right_nav">
+        <div class="username">{{userId}}</div>
+        <div class="head_img">
+            <span class="iconfont icon-morentouxiang">欢迎你
+                <ul class="set_menu" style="visibility: hidden">
+                        <li><a href="#">修改密码</a></li>
+                        <li><a href="/">退出登录</a></li>
+                </ul>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <h1>欢迎使用campus<br>HIS</h1>
+</div>
+<script>
+    <!-- 实现二级菜单显示与隐藏   -->
+    let flag1=1
+    let flag2=1
+    let userinfo = document.getElementById('user')
+    let service = document.getElementById('service')
+    userinfo.onclick = function () {
+        if(flag1==1){
+            let user_menu = document.getElementsByClassName('user_menu')[0]
+            user_menu.style.display = 'block'
+            flag1=0
+        }else {
+            let user_menu = document.getElementsByClassName('user_menu')[0]
+            user_menu.style.display = 'none'
+            flag1=1
+        }
+    }
+    service.onclick = function () {
+        if(flag2==1){
+            let serve_menu = document.getElementsByClassName('serve_menu')[0]
+            serve_menu.style.display = 'block'
+            flag2=0
+        }else {
+            let serve_menu = document.getElementsByClassName('serve_menu')[0]
+            serve_menu.style.display = 'none'
+            flag2=1
+        }
+    }
+    // 实现鼠标移入移出时设置块消失与显示
+    let setinfo = document.getElementsByClassName('icon-morentouxiang')[0]
+    let set_menu = document.getElementsByClassName('set_menu')[0]
+    setinfo.onmouseover = function () {
+        set_menu.style.visibility='visible'
+    }
+    setinfo.onmouseout = function () {
+        set_menu.style.visibility='hidden'
+    }
+</script>
+</body>
+</html>

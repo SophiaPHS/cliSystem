@@ -1,0 +1,165 @@
+body, html{
+    width: 100%;
+    height: 100%;
+    min-width: 1500px;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+.side_nav{
+    float: left;
+    width: 200px;
+    height: 100%;
+    font-size: 25px;
+    background-color: #6BAB9B;
+    color: white;
+    border: 2px solid gray;
+}
+.side_nav > .icon-yiyuanguanli{
+    display:block;
+    font-size: 30px;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    padding-right: 30px;
+    border-bottom: 1px solid white;
+    margin-bottom: 20px;
+}
+.side_nav > .nav > .user > .caret{
+    font-size: 15px;
+    text-align: right;
+}
+.side_nav > .nav >.user > .user_menu > li > a{
+    display: block;
+    text-decoration: none;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.side_nav > .nav >.user > .user_menu > li > a:hover{
+    background-color: #EEEEEE;
+    color: #23527C;
+    width: 200px;
+    height: 50px;
+    padding-top: 10px;
+    text-align: center;
+    margin-left: -43px;
+    border-radius: 6px;
+}
+.side_nav > .nav >.serve > .serve_menu > li > a{
+    display: block;
+    text-decoration: none;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.side_nav > .nav >.serve > .serve_menu > li > a:hover{
+    background-color: #EEEEEE;
+    color: #23527C;
+    width: 200px;
+    height: 50px;
+    padding-top: 10px;
+    text-align: center;
+    margin-left: -43px;
+    border-radius: 6px;
+}
+.top_nav{
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 86%;
+    height: 43px;
+    margin-left: 205px;
+    background-color: white;
+    border-right: 2px solid gray;
+    border-bottom: 2px solid white;
+    box-shadow:0 0px 8px #000000;
+}
+.top_nav > .left_nav{
+    width: 600px;
+    height: 35px;
+    margin-left: 30px;
+}
+.top_nav > .left_nav > .col-lg-6 > .input-group > .inputinfo{
+    width: 250px;
+}
+.icon-btn{
+    display: block;
+    width: 34px;
+    height: 34px;
+}
+.top_nav>.row>.col-lg-6>.input-group>.input-group-btn>.icon-btn > .icon-sousuo{
+    display: block;
+    width: 34px;
+    height: 34px;
+    font-size: 31px;
+    margin-top: -13px;
+    margin-left: -13px;
+}
+.top_nav > .right_nav{
+    display: flex;
+    width: 450px;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 700px;
+    margin-top: 5px;
+}
+.top_nav > .right_nav > .username{
+    padding-top: 8px;
+    font-size: 18px;
+    height: 40px;
+}
+.top_nav > .right_nav > .head_img > .icon-morentouxiang{
+    display: block;
+    font-size: 24px;
+    width: 200px;
+    height: 40px;
+}
+.top_nav > .right_nav > .head_img > .iconfont > .set_menu > li a{
+    text-decoration: none;
+    font-size: 16px;
+    color: gray;
+}
+.top_nav > .right_nav > .head_img > .iconfont > .set_menu > li a:hover{
+    display: block;
+    width: 90px;
+    height: 20px;
+    margin-left: -13px;
+    text-align: center;
+    background-color: gray;
+    color: white;
+}
+.top_nav > .right_nav >  .head_img > .iconfont > .set_menu {
+    display: block;
+    width: 90px;
+    height: 65px;
+    padding-left: 12px;
+    background-color: white;
+    border: 1px solid gray;
+    box-shadow:0 0px 2px gray;
+}
+.content{
+    position: relative;
+    width: 80%;
+    height: 80%;
+    top: 15px;
+    text-align: center;
+    margin-left: 250px;
+    margin-top: 50px;
+    background-color: white;
+    border: 2px solid white;
+    box-shadow:0 0px 8px #000000;
+}
+.content>h1{
+    padding-top: 150px;
+    font:italic bold 150px 华文行楷;
+    background: linear-gradient(to right, #4F95F5, #b0e793);
+    -webkit-background-clip: text;
+    color: transparent;
+}
