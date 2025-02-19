@@ -1,0 +1,151 @@
+{
+	// 路由页面的配置
+	"pages": [{
+		"path": "pages/index/index",
+		"style": {
+			"navigationStyle": "custom"
+		}
+	},{
+		"path": "pages/msg/msg",
+		"style": {
+			"navigationStyle": "custom"//设置自定义导航栏
+		}
+	},{
+		"path": "pages/user/user",
+		"style": {
+			"navigationStyle": "custom"//设置自定义导航栏
+		}
+	},{
+		"path": "pages/index/guahao/registration",
+		"style": {
+			"navigationBarTitleText": "预约挂号",
+			"navigationBarBackgroundColor": "#fff"
+		}
+	},{
+		"path": "pages/index/prescribe",
+		"style": {
+			"navigationBarTitleText": "复诊开药",
+			"navigationBarBackgroundColor": "#fff"
+		}
+	},{
+		"path": "pages/index/guahao/dutyDetail",
+		"style": {
+			"navigationBarTitleText": "挂号详情",
+			"navigationBarBackgroundColor": "#fff"
+		}
+	},{
+		"path": "pages/index/pay",
+		"style": {
+			"navigationBarTitleText": "在线缴费",
+			"navigationBarBackgroundColor": "#fff"
+		}
+	},{
+		"path": "pages/index/ereport",
+		"style": {
+			"navigationBarTitleText": "电子报告",
+			"navigationBarBackgroundColor": "#fff"
+		}
+	},{
+		"path": "pages/index/introduce",
+		"style": {
+			"navigationBarTitleText": "医院概况",
+			"navigationBarBackgroundColor": "#fff"
+		}
+	},{
+		"path": "pages/index/hosGuide",
+		"style": {
+			"navigationBarTitleText": "院内导诊",
+			"navigationBarBackgroundColor": "#fff"
+		}
+	},{
+		"path": "pages/index/doctor/doctor",
+		"style": {
+			"navigationBarTitleText": "科室医生",
+			"navigationBarBackgroundColor": "#fff"
+		}
+	},{
+		"path": "pages/index/doctor/docDetail",
+		"style": {
+			"navigationBarTitleText": "医生详情",
+			"navigationBarBackgroundColor": "#fff"
+		}
+	},{
+		"path": "pages/index/search",
+		"style": {
+			"navigationBarTitleText": "药品查询/诊疗费用查询",
+			"navigationBarBackgroundColor": "#fff",
+			"backgroundColor": "#fff"
+		}
+	},{
+		"path": "pages/user/myInfo",
+		"style": {
+			"navigationBarTitleText": "我的信息"
+		}
+	},{
+		"path": "pages/user/regRecord",
+		"style": {
+			"navigationBarTitleText": "挂号记录"
+		}
+	},{
+		"path": "pages/user/login",
+		"style": {
+			"navigationBarTitleText": "南昌航空大学校医院"
+		}
+	},{
+		"path": "pages/user/about",
+		"style": {
+			"navigationBarTitleText": "关于我们"
+		}
+	},{
+		"path": "pages/user/feedback",
+		"style": {
+			"navigationBarTitleText": "用户反馈"
+		}
+	}],
+	// 全局样式的配置
+	"globalStyle": {
+		// 顶部导航栏的文字颜色
+		"navigationBarTextStyle": "black",
+		// 导航栏背景颜色
+		"navigationBarBackgroundColor": "#F8F8F8",
+		// 页面背景颜色
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	},
+	// 底部菜单的配置
+	"tabBar": {
+		"color": "#8A8A8A",
+		"selectedColor": "#389BFF",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/tabbar_icon/icon_gray/shouye.png",
+			"selectedIconPath": "static/tabbar_icon/icon_blue/首页.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/msg/msg",
+			"iconPath": "static/tabbar_icon/icon_gray/xiaoxi.png",
+			"selectedIconPath": "static/tabbar_icon/icon_blue/xiaoxi.png",
+			"text": "消息"
+		}, {
+			"pagePath": "pages/user/user",
+			"iconPath": "static/tabbar_icon/icon_gray/wode.png",
+			"selectedIconPath": "static/tabbar_icon/icon_blue/wode.png",
+			"text": "我的"
+		}]
+	},
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "", //模式名称
+				"path": "", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	}
+
+}

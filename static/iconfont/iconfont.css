@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4005540 */
+  src: url('/static/iconfont/iconfont.ttf') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-menzhenfuwukaobei:before {
+  content: "\e6ca";
+  color: #389BFF;
+}
+
+.icon-bianminfuwu:before {
+  content: "\e60c";
+  color: #389BFF;
+}
+
+.icon-juminjiankangqia-:before {
+  content: "\e613";
+  color: #FF9000;
+  display: block;
+  vertical-align:middle; /* 使baseline 位于中间，实现文字在图片中间 */
+}
+
+
